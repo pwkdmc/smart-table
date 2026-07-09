@@ -23,8 +23,8 @@ export const initPagination = ({ pages, fromRow, toRow, totalRows }, createPage)
             return createPage(el, pageNumber, pageNumber === page);
         }));
 
-        fromRow.textContent = (page - 1) * rowsPerPage + 1;
-        toRow.textContent = Math.min((page * rowsPerPage), data.length);
+        fromRow.textContent = Math.max(0, (page - 1) * rowsPerPage + 1);
+        toRow.textContent = Math.min(page * rowsPerPage, data.length);
         totalRows.textContent = data.length;
 
         const skip = (page - 1) * rowsPerPage;
